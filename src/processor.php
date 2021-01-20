@@ -32,9 +32,7 @@
 
 	// store the total number of rows in a variable.
 	// this will be needed to loop through each row
-    $rows = $result->num_rows;
-    echo 'heyyy';
-	
+    $rows = $result->num_rows;	
 	
 	// loop through each row and print out the result
 	for($i = 0; $i < $rows; $i++) {
