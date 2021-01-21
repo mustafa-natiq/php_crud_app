@@ -1,5 +1,7 @@
 <?php 
-    use UserRepository;
+    namespace Api;
+
+    use Api\UserRepository;
 
     class UserController {
         private $dbConnection;
@@ -48,16 +50,34 @@
         }
 
         private function createUser(){
-            $usersArray = (array) json_decode(file_get_contents('php://input'), TRUE); 
-            $message = $this->UserRepository->create($usersArray);
+            $input = (array) json_decode(file_get_contents('php://input'), TRUE); 
+            $message = $this->UserRepository->create($input);
             $response['status_code_header'] = 'HTTP/1.1 201 Created';
-            $response['body'] = json_encode(array('message' => "$message"));
+            $response['body'] = { "message": "$message"};
             return $response;
         }
 
         private function updateUser($id){
-            
+            $input = (array) json_decode(file_get_contents('php://input'), TRUE);
+            $message = $this->UserRepository->update($id, $input);
+            $response['status_code_header'] = 'HTTP/1.1 200 OK';
+            $response['body'] = { "message": "$message"};
+            return $response;
         }
+
+        private function deleteUser($id){
+            $message = $this->UserRepository->delete($id);
+            $response['status_code_header'] = 'HTTP/1.1 200 OK';
+            $response['body'] = { "message": "$message"};
+            return $response;
+        }
+
+        private function notFoundResponse(){
+            $response['status_code_header'] = 'HTTP/1.1 404 Not Found';
+            $response['body'] = null;
+            return $response;
+        }
+
     }
 
 ?>

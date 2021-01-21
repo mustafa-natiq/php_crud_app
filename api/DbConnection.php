@@ -1,5 +1,7 @@
 <?php 
 
+namespace Api;
+
 class DbConnection{
     private $connection = null;
 

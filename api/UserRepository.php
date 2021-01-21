@@ -1,5 +1,6 @@
 <?php 
-    require 'DbConnection.php';
+
+    namespace Api;
 
     class UserRepository{
         private $db = null;
@@ -35,13 +36,13 @@
             }
         }
 
-        public function update($userEmail, Array $input){
+        public function update($userId, Array $input){
             try{
                 $surame = $input['surname'];
                 $firstName = $input['firstName'];
                 $email = $input['email'];
 
-                $this->db->->query("update users set surname = '$surname', firstName = '$firstName', email = '$email' where email = '$userEmail' ");
+                $this->db->->query("update users set surname = '$surname', firstName = '$firstName', email = '$email' where id = '$userId' ");
                 $this->db->close();
                 return "update successful";
             } catch(Exception $e){
@@ -50,9 +51,9 @@
             }
         }
 
-        public function delete($userEmail){
+        public function delete($userId){
             try{
-                $this->db->query("delete from users where email = '$userEmail' ");
+                $this->db->query("delete from users where id = '$userId' ");
                 return "delete successful"
             } catch(Exception $e){
                 $errorMessage = $e->getMessage();
