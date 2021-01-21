@@ -3,7 +3,7 @@
 class DbConnection{
     private $connection = null;
 
-    __construct(){
+    public function __construct(){
 
         try{
             $hostname = 'localhost';
