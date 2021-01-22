@@ -1,7 +1,5 @@
 <?php 
 
-namespace Api;
-
 class DbConnection{
     private $connection = null;
 
@@ -13,15 +11,11 @@ class DbConnection{
             $username = 'root';
             $password = '';
             
-            $surname =  $_POST['surname'];
-            $firstName = $_POST['firstName'];
-            $email = $_POST['email'];
-    
             // connect to mysql and store the connection in a variable
             $this->connection = new mysqli($hostname, $username, $password, $database);
     
             // check for connection errors
-            if ($connection->connect_error) die($connection->connect_error);
+            if ($this->connection->connect_error) die($connection->connect_error);
         } catch(Exception $e){
             $errorMessage = $e->getMessage();
             die($errorMessage);

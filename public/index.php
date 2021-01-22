@@ -1,6 +1,6 @@
 <?php
-use Api\PersonController;
-use Api\DbConnection;
+require_once('../api/UserController.php');
+require_once('../api/DbConnection.php');
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -15,6 +15,7 @@ $uri = explode( '/', $uri );
 // everything else results in a 404 Not Found
 if ($uri[1] !== 'users') {
     header("HTTP/1.1 404 Not Found");
+    echo "omo this one no follow o";
     exit();
 }
 
@@ -28,6 +29,7 @@ $requestMethod = $_SERVER["REQUEST_METHOD"];
 $DbConnectionObject = new DbConnection();
 $dbConnection = $DbConnectionObject->getConnection();
 
-// pass the request method and user ID to the PersonController and process the HTTP request:
-$controller = new PersonController($userId, $dbConnection, $requestMethod);
-$controller->processRequest();
+// pass the request method and user ID to the UserController and process the HTTP request:
+$controller = new UserController($userId, $dbConnection, $requestMethod);
+echo $controller->processRequest();
+
