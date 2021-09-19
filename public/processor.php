@@ -49,13 +49,10 @@
 		echo '<b>FIRST_NAME:</b> ' .$row['firstName'] . '<br>';
 		echo '<b>EMAIL:</b> ' . $row['email'] . '<br><br>';
 
-		// close the connection to mysql
-        
-
-        }
-
-        // $insertQuery->close();
-        // $result->close();
+		
+	}
+	
+	// close the connection to mysql
         $connection->close();
         
     } catch(Exception $e){
@@ -63,5 +60,3 @@
        echo "$errorMessage";
     }
 	
-
-?>

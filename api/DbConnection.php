@@ -15,7 +15,7 @@ class DbConnection{
             $this->connection = new mysqli($hostname, $username, $password, $database);
     
             // check for connection errors
-            if ($this->connection->connect_error) die($connection->connect_error);
+            if ($this->connection->connect_error) die($this->connection->connect_error);
         } catch(Exception $e){
             $errorMessage = $e->getMessage();
             die($errorMessage);
@@ -28,5 +28,3 @@ class DbConnection{
         return $this->connection;
     }
 }
-
-?>
