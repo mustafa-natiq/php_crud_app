@@ -17,7 +17,7 @@
         }
 
         public function processRequest(){
-            $response;
+            $response = null;
 
             switch($this->requestMethod){
                 case 'GET':

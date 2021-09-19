@@ -15,7 +15,7 @@
 
                 $this->db->query("insert into users(surname, firstName, email) values('$surname', '$firstName', '$email')");
                 $this->db->close();
-                return "creation successful";
+                return 'creation successful';
             } catch(Exception $e){
                 $errorMessage = $e->getMessage();
                 die($errorMessage);
@@ -60,4 +60,4 @@
         }
     } // end class
 
-?> 
+?>
