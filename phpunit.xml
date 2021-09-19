@@ -1,0 +1,12 @@
+<phpunit>
+    <testsuites>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./api</directory>
+        </include>
+    </coverage>
+</phpunit>
