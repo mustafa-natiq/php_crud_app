@@ -1,6 +1,7 @@
 name: Test Suite
 on: [push]
-
+env:
+  PROJECT_ENV: test
 jobs:
   test:
     runs-on: ubuntu-18.04
