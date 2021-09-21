@@ -6,17 +6,26 @@ use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Client;
 
 final class UserTest extends TestCase{
-    private $http;
+    private static $http;
+    private static $pid;
 
-    protected function setUp(): void
+    public static function setUpBeforeClass(): void
     {
-        $this->http = new Client([
+        // $command = 'php -S 127.0.0.1:9000 -t ../../public > /dev/null 2>&1 & echo $!';
+        // $output = array();
+        // exec($command, $output);
+        // echo "server started ";
+        
+        // self::$pid = (int) $output[0];
+
+        self::$http = new Client([
             'base_uri' => 'http://localhost:5000'
         ]);
     }
 
-    public function tearDown(): void {
-        $this->http = null;
+    public static function tearDownAfterClass(): void {
+        self::$http = null;
+        // exec('kill ' . self::$pid);
     }
 
     /**
@@ -27,7 +36,7 @@ final class UserTest extends TestCase{
         //post data to registration end-point
         
         // $this->post('/api/v1/register', $user);
-        $response = $this->http->post('/users', $user);
+        $response = self::$http->post('/users', $user);
 
         $this->assertEquals(201, $response->getStatusCode());
     }
