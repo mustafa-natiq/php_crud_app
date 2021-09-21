@@ -23,17 +23,9 @@ jobs:
       - name: Install dependencies
         run: composer install
 
-      - name: Start test server
-        run: nohup php -S localhost:5000 -t public > phpd.log 2>&1 &  
-
       - name: Run tests
         run: composer test
 
-      - name: Get the PID of the test server  
-        run: PHP_SERVER_PID=$!
-
-      - name: Stop test server
-        run: kill -3 $PHP_SERVER_PID
 
       - name: Upload Code Coverage to Codecov
         uses: codecov/codecov-action@v2
