@@ -1,4 +1,7 @@
 <?php
+
+
+require_once('../envLoader.php');
 require_once('../api/UserController.php');
 require_once('../api/DbConnection.php');
 
@@ -24,8 +27,14 @@ if (isset($uri[2])) {
 }
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
-$DbConnectionObject = new DbConnection();
-$dbConnection = $DbConnectionObject->getConnection();
+
+// create database connection 
+$dbConnection = null;
+if($_SERVER['PROJECT_ENV'] !== 'test'){
+    $DbConnectionObject = new DbConnection();
+    $dbConnection = $DbConnectionObject->getConnection();
+}
+
 
 // pass the request method and user ID to the UserController and process the HTTP request:
 $controller = new UserController($userId, $dbConnection, $requestMethod);

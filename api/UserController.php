@@ -1,6 +1,9 @@
 <?php 
 
+    require_once '../vendor/autoload.php';
+
     require_once('UserRepository.php');
+    require_once('AlternativeUserRepository.php');
 
     class UserController {
         private $dbConnection;
@@ -10,10 +13,12 @@
 
         public function __construct($id, $dbConnection, $requestMethod)
         {
+            $current_env = $_SERVER['PROJECT_ENV'];
+
             $this->dbConnection = $dbConnection;
             $this->requestMethod = $requestMethod;
             $this->userId = $id;
-            $this->UserRepository = new UserRepository($this->dbConnection);
+            $this->UserRepository = $current_env === 'test' ? new AlternativeUserRepository() : new UserRepository($this->dbConnection);
         }
 
         public function processRequest(){
@@ -78,4 +83,3 @@
         }
 
     }
-
