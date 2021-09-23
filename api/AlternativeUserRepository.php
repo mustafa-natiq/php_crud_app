@@ -1,5 +1,6 @@
 <?php
 
+    namespace Api;
     class AlternativeUserRepository{
         
         private $db;
@@ -68,7 +69,7 @@
         public function delete($userId){
             try{
                 $key = strval($userId);
-                unset($db[$key]);
+                unset($this->db[$key]);
                 
                 return "delete successful";
             } catch(Exception $e){

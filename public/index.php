@@ -1,9 +1,14 @@
 <?php
 
+// namespace App;
+
 
 require_once('../envLoader.php');
-require_once('../api/UserController.php');
-require_once('../api/DbConnection.php');
+use Api\UserController;
+use Api\DbConnection;
+
+// require_once('../api/UserController.php');
+// require_once('../api/DbConnection.php');
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");

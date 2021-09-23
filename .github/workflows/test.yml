@@ -26,7 +26,6 @@ jobs:
       - name: Run tests
         run: composer test
 
-
       - name: Upload Code Coverage to Codecov
         uses: codecov/codecov-action@v2
         with:

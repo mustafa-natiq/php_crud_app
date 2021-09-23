@@ -1,5 +1,7 @@
 <?php 
 
+    namespace Api;
+
     class UserRepository{
         private $db = null;
 
