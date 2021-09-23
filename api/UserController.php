@@ -1,7 +1,7 @@
 <?php 
 
     // require_once '../envLoader.php';
-    require_once(realpath(__DIR__.'/envLoader.php'));
+    // require_once(__DIR__.'/envLoader.php');
 
     require_once('UserRepository.php');
     require_once('AlternativeUserRepository.php');
@@ -19,7 +19,8 @@
             $this->dbConnection = $dbConnection;
             $this->requestMethod = $requestMethod;
             $this->userId = $id;
-            $this->UserRepository = $current_env === 'test' ? new AlternativeUserRepository() : new UserRepository($this->dbConnection);
+            // $this->UserRepository = $current_env === 'test' ? new AlternativeUserRepository() : new UserRepository($this->dbConnection);
+            $this->UserRepository =   new AlternativeUserRepository();
         }
 
         public function processRequest(){
