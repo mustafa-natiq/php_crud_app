@@ -1,6 +1,6 @@
 <?php 
 
-    require_once '../vendor/autoload.php';
+    require_once '../envLoader.php';
 
     require_once('UserRepository.php');
     require_once('AlternativeUserRepository.php');

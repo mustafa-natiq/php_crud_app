@@ -9,6 +9,7 @@ exec($command, $output);
 $pid = (int) $output[0];
 
 echo "web started on port 5000";
+sleep(10);
 
 // Kill the web server when the process ends
 register_shutdown_function(function() use ($pid) {

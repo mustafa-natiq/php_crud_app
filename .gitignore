@@ -1,2 +1,4 @@
 /vendor/
 .env
+phpd.log
+.phpunit.result.cache
