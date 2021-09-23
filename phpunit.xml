@@ -14,5 +14,9 @@
         <include>
             <directory suffix=".php">./api</directory>
         </include>
+        <exclude>
+            <file>api/DbConnection.php</file>
+            <file>api/UserRepository.php</file>
+        </exclude>
     </coverage>
 </phpunit>
