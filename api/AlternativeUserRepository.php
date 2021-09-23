@@ -1,22 +1,33 @@
-<?php 
+<?php
 
     namespace Api;
+    class AlternativeUserRepository{
+        
+        private $db;
+        private $index;
 
-    class UserRepository{
-        private $db = null;
-
-        public function __construct($db){
-            $this->db = $db;
+        public function __construct(){
+            $this->db = [];
+            $this->index = 0;
         }
 
         public function create(Array $input){
             try{
+                $this->index += 1;
+                $key = strval($this->index);
+
                 $surname = $input['surname'];
                 $firstName = $input['firstName'];
                 $email = $input['email'];
 
-                $this->db->query("insert into users(surname, firstName, email) values('$surname', '$firstName', '$email')");
-                $this->db->close();
+                $userData = [
+                    'surname' => $surname,
+                    'firstName' => $firstName,
+                    'email' => $email
+                ];
+
+                $this->db[$key] = $userData;
+                return $this->index;
                 return 'creation successful';
             } catch(Exception $e){
                 $errorMessage = $e->getMessage();
@@ -26,10 +37,7 @@
 
         public function findAll(){
             try{
-                $result = $this->db->query("select * from users");
-                $result = $result->fetch_all(MYSQLI_ASSOC);
-                $this->db->close();
-                return $result;
+                return $this->db;
             } catch(Exception $e){
                 $errorMessage = $e->getMessage();
                 die($errorMessage);
@@ -42,8 +50,15 @@
                 $firstName = $input['firstName'];
                 $email = $input['email'];
 
-                $this->db->query("update users set surname = '$surname', firstName = '$firstName', email = '$email' where id = '$userId' ");
-                $this->db->close();
+                $userData = [
+                    'surname' => $surname,
+                    'firstName' => $firstName,
+                    'email' => $email
+                ];
+
+                $key = strval($userId);
+                $db[$key] = $userData;
+                
                 return "update successful";
             } catch(Exception $e){
                 $errorMessage = $e->getMessage();
@@ -53,7 +68,9 @@
 
         public function delete($userId){
             try{
-                $this->db->query("delete from users where id = '$userId' ");
+                $key = strval($userId);
+                unset($this->db[$key]);
+                
                 return "delete successful";
             } catch(Exception $e){
                 $errorMessage = $e->getMessage();

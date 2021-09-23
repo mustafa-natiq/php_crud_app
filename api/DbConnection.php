@@ -1,5 +1,9 @@
 <?php 
 
+namespace Api;
+use mysqli;
+use Exception;
+
 class DbConnection{
     private $connection = null;
 
@@ -8,8 +12,8 @@ class DbConnection{
         try{
             $hostname = 'localhost';
             $database ='php_crud';
-            $username = 'root';
-            $password = '';
+            $username = 'root'; // replace this with your mysql username
+            $password = 'uchenna'; // replace this with your mysql username
             
             // connect to mysql and store the connection in a variable
             $this->connection = new mysqli($hostname, $username, $password, $database);
