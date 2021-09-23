@@ -68,13 +68,12 @@ final class UserTest extends TestCase{
                 )
             );
         }
-        echo "server started ";
         
         
         
 
         self::$http = new Client([
-            'base_uri' => 'http://127.0.0.1:5000'
+            'base_uri' => 'http://0.0.0.0:5000'
         ]);
     }
 
