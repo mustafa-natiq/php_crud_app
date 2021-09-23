@@ -56,7 +56,7 @@ final class UserTest extends TestCase{
 
         if (self::canConnectToHttpd('0.0.0.0', 5000)) {
                     $connected = true;
-                    echo "\n server connected";
+                    echo "server connected \n";
         }
 
         if (!$connected) {
@@ -87,7 +87,11 @@ final class UserTest extends TestCase{
         //post data to registration end-point
         
         // $this->post('/api/v1/register', $user);
-        $response = self::$http->post('/users', $user);
+        try{
+            $response = self::$http->post('/users', $user);
+        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
+            echo $e->getResponse()->getBody()->getContents();
+        }
 
         $this->assertEquals(201, $response->getStatusCode());
     }
