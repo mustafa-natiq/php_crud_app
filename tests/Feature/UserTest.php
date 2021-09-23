@@ -89,11 +89,11 @@ final class UserTest extends TestCase{
         // $this->post('/api/v1/register', $user);
         try{
             $response = self::$http->post('/users', $user);
+            $this->assertEquals(201, $response->getStatusCode());
         } catch (\GuzzleHttp\Exception\BadResponseException $e) {
             echo $e->getResponse()->getBody()->getContents();
         }
 
-        $this->assertEquals(201, $response->getStatusCode());
     }
 
      /**
