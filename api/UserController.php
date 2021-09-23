@@ -1,6 +1,7 @@
 <?php 
 
-    require_once '../envLoader.php';
+    // require_once '../envLoader.php';
+    require_once(realpath(__DIR__.'/envLoader.php'));
 
     require_once('UserRepository.php');
     require_once('AlternativeUserRepository.php');

@@ -56,6 +56,7 @@ final class UserTest extends TestCase{
 
         if (self::canConnectToHttpd('0.0.0.0', 5000)) {
                     $connected = true;
+                    echo "\n server connected";
         }
 
         if (!$connected) {
