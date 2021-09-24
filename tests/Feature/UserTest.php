@@ -18,6 +18,18 @@ final class UserTest extends TestCase{
         $response = $userController->createUser($user);
         $this->assertEquals($response['status_code_header'] , 'HTTP/1.1 201 Created');
         
+
+    }
+    /**
+     * @test
+     */
+    public function should_not_create_new_user_with_empty_input(){
+        
+        $userController = new UserController('', '', 'POST');
+        $response = $userController->createUser([]);
+        $decoded_response = json_decode($response['body']);
+        $this->assertEquals($decoded_response->message, 'empty input');
+        
     }
 
     /**

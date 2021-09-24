@@ -1,7 +1,10 @@
 <?php
 
     namespace Api;
-    class AlternativeUserRepository{
+
+use Exception;
+
+class AlternativeUserRepository{
         
         private $db;
         private $index;
@@ -13,6 +16,10 @@
 
         public function create(Array $input){
             try{
+                if(count($input) === 0){
+                    throw new Exception('empty input');
+                }
+
                 $this->index += 1;
                 $key = strval($this->index);
 
@@ -31,7 +38,7 @@
                 return 'creation successful';
             } catch(Exception $e){
                 $errorMessage = $e->getMessage();
-                die($errorMessage);
+                return $errorMessage;
             }
         }
 

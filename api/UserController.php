@@ -6,6 +6,7 @@
     require_once(__DIR__.'../../envLoader.php');
     use Api\UserRepository;
     use Api\AlternativeUserRepository;
+    use Exception;
 
     class UserController {
         public $dbConnection;
