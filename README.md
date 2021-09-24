@@ -9,16 +9,30 @@ a simple CRUD app written in vanilla php
 
 ```
 php_crud_app
+├─ .env
+├─ .github
+│  ├─ PULL_REQUEST_TEMPLATE.md
+│  └─ workflows
+│     └─ test.yml
+├─ .gitignore
 ├─ api
+│  ├─ AlternativeUserRepository.php
 │  ├─ DbConnection.php
 │  ├─ UserController.php
 │  └─ UserRepository.php
+├─ bootstrap.php
+├─ codecov.yml
+├─ composer.json
+├─ composer.lock
+├─ envLoader.php
+├─ phpunit.xml
 ├─ public
-│  ├─ form.html
-│  ├─ index.php
-│  └─ processor.php
+│  └─ index.php
 ├─ README.md
-└─ setup.sql
+├─ setup.sql
+└─ tests
+   └─ Feature
+      └─ UserTest.php
 
 ```
 
@@ -44,6 +58,11 @@ To run the project on your local machine, follow the steps below:
 - Clone this repo and navigate to the project folder
 - Change the `PROJECT_ENV` variable in the **.env** file to `development`
 - Update the config variables in the `DbConnection.php` file contained in the `api` folder to suit your MySQL credentials
+- Run the `setup.sql` file in the mysql console with a similar command:
+
+```bash
+source path/file.sql
+```
 
 - Install all dependencies by running the following command:
 
