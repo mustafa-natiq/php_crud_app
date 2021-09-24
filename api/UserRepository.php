@@ -1,6 +1,7 @@
 <?php 
 
     namespace Api;
+    use Exception;
 
     class UserRepository{
         private $db = null;
