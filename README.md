@@ -2,6 +2,7 @@
 
 [![codecov](https://codecov.io/gh/olorondu-emeka/php_crud_app/branch/main/graph/badge.svg)](https://codecov.io/gh/olorondu-emeka/php_crud_app)
 ![Github Actions](https://github.com/olorondu-emeka/php_crud_app/actions/workflows/test.yml/badge.svg)
+
 a simple CRUD app written in vanilla php
 
 # Start server
